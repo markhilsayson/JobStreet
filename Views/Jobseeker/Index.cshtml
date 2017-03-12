@@ -1,0 +1,69 @@
+﻿@model  JobStreet.ViewModels.JobseekerViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Jobseeker.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jobseeker.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jobseeker.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jobseeker.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jobseeker.PermanentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jobseeker.DateOfBirth)
+        </th>
+        <th>
+            @*@Html.DropDownListFor(model => model.Jobseeker.DateOfBirth)*@
+            @Html.DropDownListFor(m => m.Jobseeker.Id, new SelectList(Model.Nationalities, "Id", "Adjective"), "select Nationality", new { @class = "form-control" })
+            @*@Html.DisplayNameFor(model=>model.Jobseeker.Id,new SelectList(Model.Nationalities, "Id","Adjective"),"Select Nationality", new { @class = "form-control" })*@
+        </th>
+    </tr>
+
+@foreach (var item in Model.Nationalities) {
+    <tr>
+        <td>
+            
+            @Html.DisplayFor(modelItem => modelItem.Jobseeker.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Jobseeker.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Jobseeker.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Jobseeker.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Jobseeker.PermanentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Jobseeker.DateOfBirth)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Jobseeker.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Jobseeker.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Jobseeker.Id })
+        </td>*@
+    </tr>
+}
+
+</table>
